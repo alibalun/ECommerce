@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ECommerce.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center select-none flex justify-center flex-wrap">
+    @foreach(var item in Model)
+    {
+            <a class="w-[150px] h-[150px] m-[5px] border-gray-300 border-[1px] rounded-md cursor-pointer my-[12px]" asp-controller="SubCategories" asp-action="Index" asp-route-id="@item.Id">
+                <img src="https://images.migrosone.com/sanalmarket/category/list/2/1.meyve-sebze-e170e4-360x360.png" />
+                <span class="text-[12px] font-bold">@item.CategoryName</span>
+            </a>
+    }
+</div>

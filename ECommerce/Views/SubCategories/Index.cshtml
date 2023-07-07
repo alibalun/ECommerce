@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ECommerce.Models.SubCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="flex">
+    <div>
+        
+@*        <ul class="flex justify-center flex-wrap select-none border-gray-300 border-[1px]">
+            @foreach (var item in Model)
+            {
+                <li class="px-[20px] bg-gray-50 hover:bg-[#cfcfcf] transition-all cursor-pointer text-center rounded-sm py-1 mx-0 sliderButtons">@item.SubCategoryName</li>
+            }
+        </ul>*@
+        <div class="w-[200px] mx-[20px]">
+            <div class="border-[1px] p-[10px] my-[10px]">
+                <!-- For Sub categories -->
+                <span class="font-bold">Alt kategoriler</span>
+                <ul class="text-[13px] mb-[6px] select-none">
+                    @foreach(var item in Model)
+                    {
+                        <li class="my-[2px] cursor-pointer sliderButtons">@item.SubCategoryName</li>
+                    }
+                </ul>
+            </div>
+            <div class="w-[200px] border-[1px] p-[10px]">
+                <!-- For price -->
+                <span class="font-bold my-[20px] mx-[20px]">Fiyat</span>
+                <div class="flex items-center">
+                    <input type="range" class="mx-[10px] w-[120px]" id="priceRange" min="0" max="999"/>
+                    <div>
+                        <input type="text" class="w-[35px] block outline-none px-[2px] my-[2px]"
+                               placeholder="min" id="minPriceRange"/>
+                        <input type="text" class="w-[35px] block outline-none px-[2px] my-[2px]"
+                               placeholder="max" id="maxPriceRange"/>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center  my-[10px] w-[200px] border-[1px] p-[10px]">
+                <input type="checkbox" name="campaignProductsInput"/>
+                <label class="mx-[6px]" for="campaignProductsInput">Kampanyalı ürünler</label>
+            </div>
+            <button class="w-[100%] bg-white border-[2px] my-[10px] select-none hover:bg-slate-200 transition-all">Filtrele</button>
+        </div>
+
+
+    </div>
+    <div>
+        <div class="flex flex-wrap my-[40px] justify-start">
+            @foreach (var item in Model)
+            {
+                <div class="flex categoriesForSlider">
+                    <div class="subCategoryAreaName hidden">@item.SubCategoryName</div>
+                    @foreach (var subitem in item.Products)
+                    {
+                        <div class="bg-gray-300 w-[220px] mx-4 my-2">
+                            <div class="">
+                                <!-- For image -->
+                                <img src="https://images.migrosone.com/sanalmarket/product/25010037/25010037-4940e1-1650x1650.jpg"
+                                     width="220" />
+                            </div>
+                            <div class="px-[10px] bg-white border-[2px] rounded-md">
+                                <div class="text-[11px] bg-yellow-300 inline-block px-1 rounded-md mt-[5px]">
+                                    Kampanyalı ürün
+                                </div>
+                                <span class="block clear-both my-[6px] text-[14px]">@subitem.ProductName</span>
+                                <div class="font-bold text-black">@subitem.ProductPrice TL</div>
+                                <button class="hover:bg-slate-400 transition-all w-[100%] my-[10px] border-gray-400 border-[3px] rounded-md">
+                                    Sepete
+                                    ekle
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
